@@ -4,9 +4,17 @@ board = [[' ' for _ in range(board_size)] for _ in range(board_size)]
 
 # 函數：顯示當前五子棋盤狀態
 def display_board():
-    for row in board:
-        print(' '.join(row))
-    print()
+    # 顯示列數
+    print("     " + "  | ".join(f"{i:2d}" for i in range(board_size)))
+
+    for i, row in enumerate(board):
+        # 顯示行數
+        print("   " + "+-----" * (board_size - 1) + "+")
+        print(f"{i:2d} | " + " | ".join(cell.center(3) for cell in row) + " |")
+
+    # 顯示最後一行的底部
+    print("   " + "+-----" * (board_size - 1) + "+")
+    
 
 # 函數：檢查是否有玩家獲勝
 def check_winner(row, col, player_symbol):
@@ -35,13 +43,13 @@ def play_game():
 
     while True:
         display_board()
-        print(f"Player {current_player + 1}'s turn")
+        print(f"\nPlayer {current_player + 1}'s turn")
 
         # 獲取玩家輸入的位置
         while True:
             try:
-                row = int(input("Enter row (0-14): "))
-                col = int(input("Enter column (0-14): "))
+                row = int(input("Enter row (0-18): "))
+                col = int(input("Enter column (0-18): "))
                 if 0 <= row < board_size and 0 <= col < board_size and board[row][col] == ' ':
                     break
                 else:
@@ -55,13 +63,13 @@ def play_game():
         # 檢查是否有玩家獲勝
         if check_winner(row, col, player_symbols[current_player]):
             display_board()
-            print(f"Player {current_player + 1} wins!")
+            print(f"\nPlayer {current_player + 1} wins!")
             break
 
         # 檢查是否平局
         if check_draw():
             display_board()
-            print("It's a draw!")
+            print("\nIt's a draw!")
             break
 
         # 切換到下一位玩家
