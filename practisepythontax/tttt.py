@@ -1,3 +1,5 @@
+
+
 def calculate_import_duty(package_value, import_tax_rate, sales_tax_rate):
     # 計算進口稅額
     import_tax = package_value * (import_tax_rate / 100)
