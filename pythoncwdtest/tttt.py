@@ -25,3 +25,6 @@ for i in imgs:
     with open(file_path, 'wb') as f:
         f.write(jpg.content)
     name += 1
+
+#https://www.ptt.cc/bbs/Beauty/M.1638380033.A.7C7.html
+#抓ptt圖
