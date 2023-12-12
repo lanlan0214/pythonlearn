@@ -31,3 +31,4 @@ first_p_tag = soup.find("p")
 print(first_p_tag.get("class"))
 # 這是看這裡面內容
 print(first_p_tag.getText())
+print(first_p_tag["class"])
