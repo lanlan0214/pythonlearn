@@ -9,11 +9,11 @@ previous_stock_info = {}
 
 # 定義股票列表
 stock_urls = {
-    '2330': 'https://tw.stock.yahoo.com/quote/2330',
-    '6104': 'https://tw.stock.yahoo.com/quote/6104',
-    '8299': 'https://tw.stock.yahoo.com/quote/8299',
-    '3443': 'https://tw.stock.yahoo.com/quote/3443',
+    '0050': 'https://tw.stock.yahoo.com/quote/0050',
+    '2376': 'https://tw.stock.yahoo.com/quote/2376',
     '2377': 'https://tw.stock.yahoo.com/quote/2377',
+    '3443': 'https://tw.stock.yahoo.com/quote/3443',
+    '8046': 'https://tw.stock.yahoo.com/quote/8046',
     # 添加更多股票的 URL
 }
 
@@ -26,15 +26,12 @@ def get_stock_info(stock_code, url):
     a = soup.select('.Fz\(32px\)')[0]
     b = soup.select('.Fz\(20px\)')[0]
     s = ''
-    try:
-        if soup.select('#main-0-QuoteHeader-Proxy')[0].find('span', class_="C($c-trend-down)"):
-            s = '-'
-    except:
-        try:
-            if soup.select('#main-0-QuoteHeader-Proxy')[0].find('span', class_='C($c-trend-up)'):
-                s = '+'
-        except:
-            s = ''
+    if soup.select("#main-0-QuoteHeader-Proxy")[0].find('div', class_="D(f) Ai(fe) Mb(4px)").find('span', class_="C($c-trend-down)"):
+        s = '-'
+    elif soup.select("#main-0-QuoteHeader-Proxy")[0].find('div', class_="D(f) Ai(fe) Mb(4px)").find('span', class_='C($c-trend-up)'):
+        s = '+'
+    else:
+        s = ''
 
     # 使用 strip() 函數去掉 b 中的空白字符
     b_value = b.get_text().strip()
