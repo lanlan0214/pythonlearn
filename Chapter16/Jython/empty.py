@@ -116,3 +116,25 @@
 #             c = getColor(p)
 #             if distance(c, white) < 200:
 #                 setColor(p, blue)
+####################################################################### edge_detection()很像用起來黑白照手的 然後如果想要畫起外框就看一下fill fold
+# def edge_detection(source):
+#     for px in getPixels(source):
+#         x = getX(px)
+#         y = getY(px)
+#         if y < getHeight(source) - 1 and x < getWidth(source) - 1:
+#             sum = getRed(px) + getGreen(px) + getBlue(px)
+#             botrt = getPixels(source, x + 1, y + 1)
+#             sum2 = getRed(botrt) + getGreen(botrt) + getBlue(botrt)
+#             diff = abs(sum2 - sum)
+#             newColor = makeColor(diff, diff, diff)
+#             setColor = (px, newColor)
+#     writePictureTo(source, '路徑')
+####################################################################### Chromakey 背景的技術 太空熊貓 算是合成圖 背景+上已知圖
+# def chromakey(source, bg):
+#     for px in getPixels(source):
+#         x = getX(px)
+#         y = getY(px)
+#         if (getRed(px) + getBlue(px)) < getGreen(px):
+#             bgpx = getPixel(bg, x, y)
+#             bgcol = getColor(bgpx)
+#             setColor(px, bgcol)
