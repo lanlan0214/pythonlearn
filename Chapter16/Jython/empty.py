@@ -138,3 +138,109 @@
 #             bgpx = getPixel(bg, x, y)
 #             bgcol = getColor(bgpx)
 #             setColor(px, bgcol)
+####################################################################### 鏡像
+# def mirrorVertical(source):
+#     width = getWidth(source)
+#     mirrorPoint = getWidth(source) / 2
+#     for y in range(0, getHeight(source)):
+#         for x in range(0, mirrorPoint):
+#             leftPixel = getPixel(source, x , y)
+#             rightPixel = getPixel(source, width - 1 - x, y)
+#             setColor(rightPixel, getColor(leftPixel))
+# # f = pickAFile()
+# # p = makePicture(f)
+# # mirrorVertical(p)
+# # expore(p)
+####################################################################### 上下的鏡像
+# def mirrorHorizontal(source):
+#     for y in range(getWidth(source)):
+#         for x in range(getHeight(source) / 2):
+#             p1 = getPixel(source, x, y)
+#             p2 = getPixel(source, x, getHeight(source) - 1 - y)
+#             setColor(p2, getColor(p1))
+# # f = pickAFile()
+# # p = makePicture(f)
+# # mirrorHorizontal(p)
+# # expore(p)
+####################################################################### 左上到右下對角線鏡像
+# def mirrorDiagonal(pic):
+#     for y in range(getHeight(pic)):
+#         for x in range(y):
+#             p1 = getPixel(pic, x, y)
+#             p2 = getPixel(pic, y, x)
+#             setColor(p2, getColor(p1))
+# # f = pickAFile()
+# # p = makePicture(f)
+# # mirrorDiagonal(p)
+# # expore(p)
+####################################################################### 右上到左下對角線鏡像
+# def mirrorDiagonal2(pic):
+#     for y in range(getHeight(pic)):
+#         for x in range(getWidth(pic) - y):
+#             p1 = getPixel(pic, x, y)
+#             p2 = getPixel(pic, getHeight(pic) - 1 - y, getWidth(pic) - 1 - x)
+#             setColor(p2, getColor(p1))
+# # f = pickAFile()
+# # p = makePicture(f)
+# # mirrorDiagonal2(p)
+# # expore(p)
+####################################################################### MISC copy picture
+# canvas = makeEmptyPicture(1000, 1000)
+# def copyInGeneral(pic, targetX, targetY):
+#     for x in range(getWidth(pic)):
+#         for y in range(getHeight(pic)):
+#             p1 = getPixel(pic, x, y)
+#             p2 = getPixel(canvas, targetX + x, targetY + y)
+#             setColor(p2, getColor(p1))
+#     writePictureTo(canvas, '路徑') # 路徑像是 C:\\Users\\s9208\\Destop\\result.png
+# # f = pickAFile()
+# # p = makePicture(f)
+# # copyInGeneral(p, 0, 0)
+# p = makePicture(pickFile())
+# copyInGeneral(p, 100, 100)
+# copyInGeneral(p, 400, 400)
+# # 這樣會有兩個複製的照片在圖中
+####################################################################### 把圖片變小
+# def scaleDown(pic):
+#     w = getWidth(pic)
+#     h = getHeight(pic)
+#     canvas = makeEmptyPicture(w / 2, h / 2)
+#     targetX = 0
+#     targetY = 0
+#     for x in range(0, w, 2):
+#         for y in range(0, h, 2):
+#             p1 = getPixel(pic, x, y)
+#             p2 = getPixel(canvas, targetX, targetY)
+#             setColor(p2, getColor(p1))
+#             targetY = targetY + 1
+#         targetX = targetX + 1
+#         targetY = 0
+#     writePictureTo(canvas, '路徑')
+# # f = pickAFile()
+# # scaleDown(makePicture(f))
+####################################################################### 把圖片變大
+# def scaleUp((pic)):
+#     w = getWidth(pic)
+#     h = getHeight(pic)
+#     canvas = makeEmptyPicture(w * 2, h * 2)
+#     targetX = 0
+#     targetY = 0
+#     for x in range(w):
+#         for y in range(h):
+#             p1 = getPixel(pic, x, y)
+#             c = getColor(p1)
+#             p2 = getPixel(canvas, targetX, targetY)
+#             p3 = getPixel(canvas, targetX + 1, targetY) # 等同於右邊
+#             p4 = getPixel(canvas, targetX, targetY + 1) # 等同於下面
+#             p5 = getPixel(canvas, targetX + 1, targetY + 1)
+#             setColor(p2, c)
+#             setColor(p3, c)
+#             setColor(p4, c)
+#             setColor(p5, c)
+#             targetY += 2
+#         targetX += 2
+#         targetY = 0
+#     writePictureTo(canvas, '路徑')
+# # f = pickAFile()
+# # scaleUp(makePicture(f))
+####################################################################### Blur 像素問題
