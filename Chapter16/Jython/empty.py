@@ -244,3 +244,24 @@
 # # f = pickAFile()
 # # scaleUp(makePicture(f))
 ####################################################################### Blur 像素問題
+#######################################################################
+#######################################################################
+# def blur(source):
+#   target = duplicatePicture(source) # 這是複製一份新的
+#   for x in range(1, getWIdth(source) -1):
+#     for y in range(1, getHeight(source) -1):
+#       top = getPixel(source, x, y - 1)
+#       left = getPixel(source, x - 1, y)
+#       bottom = getPixel(source, x, y + 1)
+#       right = getPixel(source, x + 1, y)
+#       center = getPixel(target, x, y)
+#       newRed = (getRed(top) + getRed(left) + getRed(bottom) + getRed(right) + getRed(center)) / 5
+#       newGreen = (getGreen(top) + getGreen(left) + getGreen(bottom) + getGreen(right) + getGreen(center)) / 5
+#       newBlue = (getBlue(top) + getBlue(left) + getBlue(bottom) + getBlue(right) + getBlue(center)) / 5
+#       setColor(center, makeColor(newRed, newGreen, newBlue))
+#   writePictureTo(target, "路徑")
+# # f = pickAFile()
+# # blur(makePicture(f))
+a = [[1,2],[4,3],[5,1],[9,2],[3,7]]
+b = sorted(a, key = lambda x: x[1])
+print(list(b))    # [[5, 1], [1, 2], [9, 2], [4, 3], [3, 7]]
