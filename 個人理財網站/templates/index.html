@@ -43,6 +43,8 @@
 
 <hr>
 
+<!-- pip install matplotlib 這是做圖表要下載的 -->
+
 <div id="stock-info">
     <h2>股票庫存</h2>
     <table class="table table-bordered">
@@ -74,4 +76,26 @@
         </tbody>
     </table>
 </div>
+
+<div id="chart" style="display: flex; flex-wrap: wrap;">
+    {% if data['show_pic_1'] %}
+    <figure style="flex: 0 1 500px; margin: 10px;">
+        <figcaption>股票庫存占比圖</figcaption>
+        <img style="width: 100%;" src="/static/piechart.jpg" alt="股票庫存占比圖">
+    </figure>
+    {% endif %}
+    {% if data['show_pic_2'] %}
+    <figure style="flex: 0 1 500px; margin: 10px;">
+        <figcaption>資產比例占比圖</figcaption>
+        <img style="width: 100%;" src="/static/piechart2.jpg" alt="資產比例占比圖">
+    </figure>
+    {% endif %}
+</div>
+
 {% endblock %}
+
+
+<!-- 假如是第一次 進來的話 先把static裡面圖片刪除,然後 db刪除
+    然後先建資料庫 python db_setting.py
+    然後啟動python index.py
+-->
